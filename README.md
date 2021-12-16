@@ -1,1 +1,1 @@
-# TetrisGame
+Tetris project for CS434
