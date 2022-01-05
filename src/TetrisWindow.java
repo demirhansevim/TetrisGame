@@ -18,12 +18,20 @@ public class TetrisWindow extends JFrame {
         add(scoreboard, BorderLayout.NORTH);
         scoreboard.add(score, BorderLayout.CENTER);
 
+        var board = new Board(this);
+        add(board);
+        board.start();
+
         setSize(250, 500);
         setTitle("Tetris Game");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
 
+    }
+
+    JLabel getScore() {
+        return score;
     }
 
     public static TetrisWindow getInstance() {
