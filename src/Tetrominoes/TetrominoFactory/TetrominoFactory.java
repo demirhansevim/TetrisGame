@@ -3,12 +3,19 @@ package Tetrominoes.TetrominoFactory;
 import java.util.HashMap;
 
 public class TetrominoFactory {
-
+    private static TetrominoFactory tetrominoFactory;
     private static final HashMap<String, Tetromino> tetrominoMap = new HashMap<>();
 
+    public static TetrominoFactory getInstance() {
+        if (tetrominoFactory == null)
+            tetrominoFactory = new TetrominoFactory();
+        return tetrominoFactory;
+    }
+
     public Tetromino createShape(String type) {
-    
+
         Tetromino tetromino = tetrominoMap.get(type);
+        
         if (tetromino == null) {
             switch (type) {
                 case "ITetromino":

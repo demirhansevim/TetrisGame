@@ -38,7 +38,7 @@ public class TetrisGame extends JPanel {
     private JLabel scoreLabel;
     private JLabel isPaused;
     private Tetromino[] board;
-    protected TetrominoFactory factory = new TetrominoFactory();
+    protected TetrominoFactory factory = TetrominoFactory.getInstance();
     private GameState state = GameRunning.getInstance();
 
     public TetrisGame(TetrisWindow parent) {

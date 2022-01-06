@@ -5,8 +5,9 @@ import java.util.Random;
 import Tetrominoes.TetrominoFactory.Tetromino;
 import Tetrominoes.TetrominoFactory.TetrominoFactory;
 
-public class CreateTetromino implements Cloneable {
-    protected TetrominoFactory factory = new TetrominoFactory();
+public class CreateTetromino {
+    protected TetrominoFactory factory = TetrominoFactory.getInstance();
+
     private String[] tetrominoes = { "ZTetromino", "STetromino", "ITetromino", "TTetromino", "OTetromino",
             "LTetromino", "JTetromino"
     };
@@ -49,21 +50,7 @@ public class CreateTetromino implements Cloneable {
         return top;
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-
-    }
-
-    protected CreateTetromino deepCopy() {
-        CreateTetromino newTetromino = null;
-        try {
-            newTetromino = (CreateTetromino) super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return newTetromino;
-    }
+  
 
     public void createRandomTetromino() {
         var r = new Random();
@@ -78,7 +65,9 @@ public class CreateTetromino implements Cloneable {
             return this;
         }
 
-        CreateTetromino result = (CreateTetromino) this.deepCopy();
+        CreateTetromino rotatedTetromino = new CreateTetromino();
+
+        rotatedTetromino.tetromino = tetromino.clone();
 
         int[][] shape = { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
         for (int i = 0; i < 4; i++) {
@@ -88,8 +77,8 @@ public class CreateTetromino implements Cloneable {
         }
         for (int i = 0; i < 4; ++i) {
 
-            result.setX(i, shape[i][1]);
-            result.setY(i, -shape[i][0]);
+            rotatedTetromino.setX(i, shape[i][1]);
+            rotatedTetromino.setY(i, -shape[i][0]);
         }
 
         return this;
