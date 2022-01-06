@@ -4,7 +4,12 @@ import java.util.HashMap;
 
 public class TetrominoFactory {
     private static TetrominoFactory tetrominoFactory;
-    private static final HashMap<String, Tetromino> tetrominoMap = new HashMap<>();
+    private HashMap<String, Tetromino> tetrominoMap; 
+
+
+    private TetrominoFactory(){
+        this.tetrominoMap = new HashMap<String,Tetromino>();
+    }
 
     public static TetrominoFactory getInstance() {
         if (tetrominoFactory == null)
